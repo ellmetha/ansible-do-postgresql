@@ -1,13 +1,14 @@
 ---
 
 - name: Ensure that packages needed for postgreSQL are present
-  apt: "name={{ item }} state=present"
-  with_items:
-    - postgresql
-    - postgresql-client
-    - postgresql-server-dev-all
-    - libpq-dev
-    - python3-psycopg2
+  apt:
+    state: present
+    name:
+      - postgresql
+      - postgresql-client
+      - postgresql-server-dev-all
+      - libpq-dev
+      - python3-psycopg2
 
 - name: Ensure that postgreSQL is started
   service: name=postgresql state=started enabled=yes
